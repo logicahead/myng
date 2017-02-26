@@ -27,6 +27,7 @@ export class LocalStorageService {
     return JSON.parse(sessionStorage.getItem(property));
   };
 
+
   setSessionValue(property: string, value: any, loanId?: string) {
     if (loanId) {
       property = `${property}:${loanId}`;

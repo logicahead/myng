@@ -9,6 +9,8 @@ export class HttpClient {
 
   public urlPrefix: string;
 
+
+
   constructor(private http: Http, private sessionState: SessionState) {
     this.urlPrefix = `${SETTINGS.API.URL}/${SETTINGS.API.NAME_SPACE}`;
   }
