@@ -1,0 +1,7 @@
+<div class="content">
+  <div class="loader-circle" [style.width]="size + 'px'" [style.height]="size + 'px'"></div>
+  <div class="loader-line-mask" [style.height]="size + 'px'" [style.width]="(size / 2) + 'px'" [style.transform-origin]="(size / 2) + 'px ' + (size / 2) + 'px'">
+    <div class="loader-line" [style.width]="size + 'px'" [style.height]="size + 'px'"></div>
+  </div>
+  <h3 class="text-primary m-b-2" *ngFor="let statusMessage of statusMessages">{{statusMessage}}</h3>
+</div>
