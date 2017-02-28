@@ -34,4 +34,6 @@ export class CookieService {
   deleteCookie(cname: string) {
     this.setCookie(cname, '', -1);
   }
+
+  https://github.com/MikaAK/angular-safeguard/blob/master/src/Cookie.ts
 }
