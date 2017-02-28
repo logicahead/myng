@@ -1,38 +1,37 @@
 import {Injectable} from '@angular/core';
+import { Http, Response } from '@angular/http';
 
 @Injectable()
-export class LocalStorageService {
+export class CookieService {
 
-  constructor() {
+  constructor () {}
+
+  setCookie(cname: string, cvalue: string, exdays: number) {
+    let d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ',expires=' + expires + ',path=/';
   }
 
-  getPersistentValue(property: string, loanId?: string): any {
-    if (loanId) {
-      property = `${property}:${loanId}`;
+  parseCookie(){
+    let pairs = document.cookie.split(',');
+    let map = {};
+    for (let i=0; i<pairs.length; i++) {
+      let pair = pairs[i];
+      let result = pair.split('=');
+      if (result[0]) {
+        map[result[0]] = result[1];
+      }
     }
-    return JSON.parse(localStorage.getItem(property));
-  };
-
-  setPersistentValue(property: string, value: any, loanId?: string) {
-    if (loanId) {
-      property = `${property}:${loanId}`;
-    }
-    localStorage.setItem(property, JSON.stringify(value));
+    return map;
   }
 
-  getSessionValue(property: string, loanId?: string): any {
-    if (loanId) {
-      property = `${property}:${loanId}`;
-    }
-    return JSON.parse(sessionStorage.getItem(property));
-  };
-
-
-  setSessionValue(property: string, value: any, loanId?: string) {
-    if (loanId) {
-      property = `${property}:${loanId}`;
-    }
-    sessionStorage.setItem(property, JSON.stringify(value));
+  getCookie(cname: string) {
+    let pairs = this.parseCookie();
+    return pairs[cname];
   }
 
+  deleteCookie(cname: string) {
+    this.setCookie(cname, '', -1);
+  }
 }
