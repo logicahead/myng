@@ -35,5 +35,11 @@ export class CookieService {
     this.setCookie(cname, '', -1);
   }
 
+  function getCookie(name) {
+  var value = "; " + document.cookie;
+  var parts = value.split("; " + name + "=");
+  if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
   https://github.com/MikaAK/angular-safeguard/blob/master/src/Cookie.ts
 }
