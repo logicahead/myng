@@ -46,6 +46,17 @@ export class CookieService {
     return null;
 }
 
+ return document.cookie
+      .split(COOKIE_SEP)
+      .filter(value => !!value)
+      .map(items => items.split('='))
+      .reduce((res, [key, value]) => (res[decode(key)] = decode(value), res), {})
+  }
+
+  public static get(key): any {
+    return this.getAll()[key]
+}
+
   function getCookie(name) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
