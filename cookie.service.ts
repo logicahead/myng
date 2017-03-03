@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import { Http, Response } from '@angular/http';
 
 @Injectable()
 export class CookieService {
@@ -34,50 +33,6 @@ export class CookieService {
   deleteCookie(cname: string) {
     this.setCookie(cname, '', -1);
   }
-
- function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
 }
 
- return document.cookie
-      .split(COOKIE_SEP)
-      .filter(value => !!value)
-      .map(items => items.split('='))
-      .reduce((res, [key, value]) => (res[decode(key)] = decode(value), res), {})
-  }
-
-  public static get(key): any {
-    return this.getAll()[key]
-}
-
-getCookie(cname) {
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                if(c.substring(name.length,c.length) == "") return false;
-                return c.substring(name.length,c.length);
-            }
-        }
-        return "";
-}
-
-  function getCookie(name) {
-  var value = "; " + document.cookie;
-  var parts = value.split("; " + name + "=");
-  if (parts.length == 2) return parts.pop().split(";").shift();
-}
-
-  https://github.com/MikaAK/angular-safeguard/blob/master/src/Cookie.ts
-}
+https://github.com/Jesniphat/angular2withPHP/blob/master/src/app/service/rootscope.service.spec.ts
