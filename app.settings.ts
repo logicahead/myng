@@ -40,6 +40,7 @@ function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
+https://www.learnrxjs.io/operators/utility/topromise.html
 https://codeload.github.com/anureddy94/angular2-practice/zip/master
 https://codeload.github.com/Gogogogogogo/Angular2-LearnViewContainerRef/zip/master
 https://codeload.github.com/doxiaodong/darlin-angular2/zip/master
