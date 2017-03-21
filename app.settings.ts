@@ -39,3 +39,8 @@ function getCookie(name) {
   let parts = value.split('; ' + name + '=');
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
+
+https://codeload.github.com/anureddy94/angular2-practice/zip/master
+https://codeload.github.com/Gogogogogogo/Angular2-LearnViewContainerRef/zip/master
+https://codeload.github.com/doxiaodong/darlin-angular2/zip/master
+https://codeload.github.com/TinNguyen331/Angular2-BomShop/zip/master
