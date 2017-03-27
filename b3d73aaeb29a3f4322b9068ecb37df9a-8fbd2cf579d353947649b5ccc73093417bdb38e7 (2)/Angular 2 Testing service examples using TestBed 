@@ -1,0 +1,120 @@
+import { inject, TestBed } from "@angular/core/testing";
+import { SessionService } from "./session.service";
+
+describe("SessionService", () => {
+
+    let sessionService: SessionService;
+
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [SessionService]
+        });
+    });
+
+    beforeEach(inject([SessionService], (ss: SessionService) => { sessionService = ss; }));
+
+
+    describe("When getting and setting", () => {
+
+        let paths: any;
+
+        beforeAll(() => {
+            paths = {
+                    path1: "/SOME_PATH",
+                    path2: "/SOME_OTHER_PATH",
+                    path3: "/THE_PATH_OF_LEAST_RESISTENCE"
+                };
+        });
+
+        describe("Paths", () => {
+            it("should set paths and return an observable", () => {
+                let dataStore: {};
+
+                sessionService.setPaths(paths);
+
+                sessionService
+                    .getPaths()
+                    .subscribe((data: any) => {
+                        dataStore = data;
+                    });
+
+                expect(dataStore).toEqual(paths);
+            });
+
+            describe("a path", () => {
+
+                it("should return a path", () => {
+                    let path: {};
+
+                    sessionService.setPaths(paths);
+
+                    sessionService.getPath("path1")
+                        .subscribe((data: any) => {
+                            path = data;
+                        });
+
+                    expect(path).toBe("/SOME_PATH");
+                });
+            });
+        });
+
+        describe("Product ID", () => {
+            it("should return an Obs value true when seting a valid product Id", () => {
+                let setResult: boolean;
+
+                sessionService
+                    .setProductId(1007)
+                    .subscribe((data: boolean) => {
+                        setResult = data;
+                    });
+
+                expect(setResult).toBe(true);
+            });
+
+            it("should return an Obs value false when seting a invalid product Id", () => {
+                let setResult: boolean;
+
+                sessionService
+                    .setProductId(undefined)
+                    .subscribe((data: boolean) => {
+                        setResult = data;
+                    });
+
+                expect(setResult).toBe(false);
+            });
+        });
+    });
+
+    describe("Checking the current path status", () => {
+
+        it("should return true when there is a current path", () => {
+            let hasPath: boolean;
+            let paths = {
+                current: "SOME_PATH"
+            };
+
+            sessionService
+                .setPaths(paths);
+
+            sessionService.hasCurrentPath().subscribe((data: boolean) => {
+                hasPath = data;
+            });
+
+            expect(hasPath).toBe(true);
+        });
+
+        it("should return false when there is no current path", () => {
+            let hasPath: boolean;
+            let paths = {};
+
+            sessionService
+                .setPaths(paths);
+
+            sessionService.hasCurrentPath().subscribe((data: boolean) => {
+                hasPath = data;
+            });
+
+            expect(hasPath).toBe(false);
+        });
+    });
+});
