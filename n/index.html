@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title><%= webpackConfig.metadata.title %></title>
+
+  <meta name="description" content="<%= webpackConfig.metadata.title %>">
+
+  <% if (webpackConfig.htmlElements.headTags) { %>
+  <!-- Configured Head Tags  -->
+  <%= webpackConfig.htmlElements.headTags %>
+  <% } %>
+
+  <!-- base url -->
+  <base href="<%= webpackConfig.metadata.baseUrl %>">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    body .vertical-centered-box {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+    body .vertical-centered-box:after {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      margin-right: -0.25em;
+    }
+    body .vertical-centered-box .content {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+      font-size: 0;
+    }
+    body {
+      background: #ffffff;
+    }
+    .loader-circle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 3px rgba(100, 145, 100, 0.1);
+      margin-left: -25px;
+      margin-top: -25px;
+    }
+    .loader-line-mask {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 25px;
+      height: 50px;
+      margin-left: -25px;
+      margin-top: -25px;
+      overflow: hidden;
+      -webkit-transform-origin: 25px 25px;
+      -moz-transform-origin: 25px 25px;
+      -o-transform-origin: 25px 25px;
+      -ms-transform-origin: 25px 25px;
+      transform-origin: 25px 25px;
+      -webkit-mask-image: -webkit-linear-gradient(top, #000000, rgba(0, 0, 0, 0));
+      -webkit-animation: rotate 1.2s infinite linear;
+      -moz-animation: rotate 1.2s infinite linear;
+      -o-animation: rotate 1.2s infinite linear;
+      animation: rotate 1.2s infinite linear;
+    }
+    .loader-line-mask .loader-line {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 3px #5e9aca;
+    }
+    @-webkit-keyframes rotate {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    @-moz-keyframes rotate {
+      0% {
+        -moz-transform: rotate(0deg);
+      }
+      100% {
+        -moz-transform: rotate(360deg);
+      }
+    }
+    @-o-keyframes rotate {
+      0% {
+        -o-transform: rotate(0deg);
+      }
+      100% {
+        -o-transform: rotate(360deg);
+      }
+    }
+    @keyframes rotate {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes rotate {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    @-moz-keyframes rotate {
+      0% {
+        -moz-transform: rotate(0deg);
+      }
+      100% {
+        -moz-transform: rotate(360deg);
+      }
+    }
+    @-o-keyframes rotate {
+      0% {
+        -o-transform: rotate(0deg);
+      }
+      100% {
+        -o-transform: rotate(360deg);
+      }
+    }
+    @keyframes rotate {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
+    }
+    @-moz-keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
+    }
+    @-o-keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
+    }
+    @keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
+    }
+    @-webkit-keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
+    }
+    @-moz-keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
+    }
+    @-o-keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
+    }
+    @keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
+    }
+    @-webkit-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @-moz-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @-o-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @-webkit-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @-moz-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @-o-keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <app>
+    <div class="vertical-centered-box">
+      <div class="content">
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask">
+          <div class="loader-line"></div>
+        </div>
+      </div>
+    </div>
+  </app>
+
+  <!-- Comment out analytics until it's specifically required -->
+  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
+  <!--<script>-->
+  <!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
+  <!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
+  <!--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
+  <!--})(window,document,'script','//www.google-analytics.com/analytics.js','ga');-->
+
+  <!--ga('create', 'UA-71073175-1', 'auto');-->
+  <!--ga('send', 'pageview');-->
+  <!--</script>-->
+
+  <% if (webpackConfig.metadata.isDevServer && webpackConfig.metadata.HMR !== true) { %>
+  <!-- Webpack Dev Server reload -->
+  <script src="/webpack-dev-server.js"></script>
+  <% } %>
+</body>
+</html>
