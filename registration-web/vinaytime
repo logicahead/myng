@@ -1,6 +1,7 @@
 import * as moment from 'moment';
 import * as momentTimezone from 'moment-timezone';
 import { Injectable } from '@angular/core';
+http://stackoverflow.com/questions/29174810/javascript-date-timezone-issue
 
 @Injectable()
 export class Utils {
