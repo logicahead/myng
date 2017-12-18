@@ -36,3 +36,16 @@ private sortLiabilityModelsByBalance(liabilityParent: LiabilityParent): Liabilit
 
     return liabilityParent;
   }
+  
+  updateFeeSectionsCpy() : void {
+    //TODO: pull property name from a constant. Don't hardcode 'name'
+    this.feeSectionsCpy = (this.sections || []).map( ( section: FeesSection ) => {
+      return Object.assign({}, omit(section, 'fees') as any, {
+        // here is the logic that checks if we should display fee in a template
+        fees: chain(section.fees)
+          .filter( ( fee: SelectableMortgagePricingFee ) => /*!fee.selected &&*/ fee.isEditable /*&& !fee.hasBeenEditedByUser*/)
+          .sortBy(['name'])
+          .map(f=>Object.assign({}, f))
+          .value()
+      } as any)
+    });
