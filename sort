@@ -22,3 +22,17 @@ export class OrderByPipe implements PipeTransform {
   }
 
 }
+private sortLiabilityModelsByBalance(liabilityParent: LiabilityParent): LiabilityParent {
+    liabilityParent.liabilityModels = _.sortBy(liabilityParent.liabilityModels, function (o: LiabilityModel) {
+      if (o.liabilityType === lookupConstants.pos.loan.urla.liabilityType.DEBT.value) {
+        return o.debt.balance;
+      } else {
+        return 0;
+      }
+    });
+
+    // highest balance first
+    liabilityParent.liabilityModels.reverse();
+
+    return liabilityParent;
+  }
