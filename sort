@@ -49,3 +49,15 @@ private sortLiabilityModelsByBalance(liabilityParent: LiabilityParent): Liabilit
           .value()
       } as any)
     });
+    
+    getPaidByOptions(
+    allOptions: string[],
+    usedOptions: string[],
+    rowPaidByOption: string
+  ) : string[] {
+    return _.chain(allOptions)
+      .difference(usedOptions)
+      .concat(rowPaidByOption)
+      .sortBy([ option => allOptions.indexOf(option)])
+      .value();
+  }
